@@ -1,0 +1,19 @@
+{
+  "extends": "@tsconfig/recommended/tsconfig.json",
+  "compilerOptions": {
+    "target": "ES2018",
+    "lib": ["ES2018", "DOM", "DOM.Iterable"],
+    "outDir": "lib",
+    "sourceMap": true,
+    "declaration": true,
+    "stripInternal": true,
+    "allowJs": true
+  },
+  "include": [
+    "src/**/*.ts",
+    "src/**/__tests__/**/*.ts",
+    "src/**/*.test.ts",
+    "fixtures/**/*.ts",
+    "fixtures/**/*.js"
+  ]
+}
