@@ -1,4 +1,5 @@
 import {CompatServiceDefinition, MethodDefinition, ServiceDefinition} from '.';
+import {getHttpTranscodingParameters} from './http-rule-extension/transcoding';
 
 export interface GrpcWebServiceDefinition {
   serviceName: string;
@@ -75,7 +76,7 @@ export function fromGrpcWebServiceDefinition(
     const method = value as GrpcWebMethodDefinition<any, any>;
 
     result[uncapitalize(key)] = {
-      path: `/${definition.serviceName}/${key}`,
+      ...getHttpTranscodingParameters(undefined, `/${definition.serviceName}/${key}`),
       requestStream: method.requestStream,
       responseStream: method.responseStream,
       requestDeserialize: method.requestType.deserializeBinary,

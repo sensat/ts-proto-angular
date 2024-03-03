@@ -1,4 +1,7 @@
+import { MethodOptions } from 'ts-proto-descriptors';
 import {CompatServiceDefinition, MethodDefinition, ServiceDefinition} from '.';
+import { http } from './http-rule-extension/annotations';
+import {getHttpTranscodingParameters} from './http-rule-extension/transcoding';
 
 export type TsProtoServiceDefinition = {
   name: string;
@@ -63,13 +66,18 @@ export function fromTsProtoServiceDefinition(
   const result: ServiceDefinition = {};
 
   for (const [key, method] of Object.entries(definition.methods)) {
+    const rule = MethodOptions.getExtension(
+      method.options as unknown as MethodOptions,
+      http
+    );
+
     const requestEncode = method.requestType.encode;
     const requestFromPartial = method.requestType.fromPartial;
     const responseEncode = method.responseType.encode;
     const responseFromPartial = method.responseType.fromPartial;
 
     result[key] = {
-      path: `/${definition.fullName}/${method.name}`,
+      ...getHttpTranscodingParameters(rule, `/${definition.name}/${key}`),
       requestStream: method.requestStream,
       responseStream: method.responseStream,
       requestDeserialize: method.requestType.decode,

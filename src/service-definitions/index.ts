@@ -23,7 +23,9 @@ export type MethodDefinition<
   RequestStream extends boolean = boolean,
   ResponseStream extends boolean = boolean,
 > = {
+  method: string;
   path: string;
+  body: string;
   requestStream: RequestStream;
   responseStream: ResponseStream;
   requestSerialize(value: RequestIn): Uint8Array;
