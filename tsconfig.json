@@ -1,14 +1,21 @@
 {
-  "extends": "@tsconfig/recommended/tsconfig.json",
+  "compileOnSave": false,
   "compilerOptions": {
-    "target": "ES2018",
-    "lib": ["ES2018", "DOM", "DOM.Iterable"],
-    "outDir": "lib",
-    "moduleResolution": "node",
     "sourceMap": true,
-    "declaration": true,
-    "stripInternal": true,
-    "allowJs": true
+    "declaration": false,
+    "moduleResolution": "node",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "esModuleInterop": true,
+    "target": "ES2022",
+    "module": "ES2022",
+    "typeRoots": ["node_modules/@types"],
+    "types": ["jasmine", "node"],
+    "lib": ["es2017", "dom"],
+    "noUnusedLocals": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "useDefineForClassFields": false
   },
   "include": [
     "src/**/*.ts",
