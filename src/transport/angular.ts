@@ -2,10 +2,12 @@ import {HttpClient, HttpErrorResponse, HttpHeaders} from '@angular/common/http';
 import {Call, Transport} from './transport';
 import {Observable, catchError, throwError} from 'rxjs';
 import {HttpError} from './error';
+import { Injectable } from '@angular/core';
 
 // can't be used for streaming endpoints
 // as HttpClient uses XMLHttpRequest under the hood
 // and it doesn't support streaming
+@Injectable({providedIn: 'root'})
 export class AngularTransport implements Transport {
   constructor(private readonly http: HttpClient) {}
 
