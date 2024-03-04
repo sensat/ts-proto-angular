@@ -10,7 +10,7 @@
     "target": "ES2022",
     "module": "ES2022",
     "typeRoots": ["node_modules/@types"],
-    "types": ["jasmine", "node"],
+    "types": ["node"],
     "lib": ["es2017", "dom"],
     "noUnusedLocals": true,
     "skipLibCheck": true,
